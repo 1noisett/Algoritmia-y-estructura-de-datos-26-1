@@ -16,17 +16,8 @@ void crearCromosoma(int *cromosoma, int tamanoCromosoma, int numeroCromosoma) {
     }
 }
 
-bool verificarDependencias(int *cromosoma,int *arrDependencias,int numDependencias) {
-    for (int i = 0; i < numDependencias; i++) {
-        int dependencia = arrDependencias[i];
-        if (cromosoma[dependencia] == 0)
-            return false;
-    }
-    return true;
-}
-
 bool verificarDependencias(int *cromosoma, Recurso *lista, int tamano) {
-    for (int i = 0; i < tamano; i++) {//Segundo filtro ( verificar dependencias)
+    for (int i = 0; i < tamano; i++) {
         if (cromosoma[i] == 1) {
             for (int d = 0; d < lista[i].numDependencias; d++) {
                 int indxDependencia = lista[i].dependencias[d];
