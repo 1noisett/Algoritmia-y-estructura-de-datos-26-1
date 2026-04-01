@@ -30,7 +30,7 @@ int main() {
     int tamano = 8;
     int *cromosoma = new int[tamano];
     int combinaciones = 1 << tamano;
-
+    //Variables
     int presupuesto = 100000;
     int beneficioTotalComp = 190;
     int falsosNegativosComp = 4;
