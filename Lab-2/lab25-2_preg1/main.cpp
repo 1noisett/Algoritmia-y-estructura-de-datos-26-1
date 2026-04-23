@@ -15,7 +15,7 @@ using namespace std;
 3 Gómez Defensa
 7 Miguel Delantero
 99 Kevin Portero
- */
+*/
 
 void reordenaFormacion(Lista &listaTAD,string formacion[],int cantidadPosiciones){
     NodoLista *nuevaCabeza = nullptr;
@@ -122,4 +122,4 @@ int main() {
         }
         j++;
     }
- */
+*/
