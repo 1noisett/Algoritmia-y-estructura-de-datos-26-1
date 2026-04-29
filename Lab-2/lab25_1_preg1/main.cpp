@@ -48,7 +48,6 @@ void reordenarLista(Lista &listaTAD) {
         listaTAD.inicio = nuevaCabezaPar;
         nuevaColaPar->siguiente = nuevaCabezaImpar;
     }
-
 }
 
 int main() {
