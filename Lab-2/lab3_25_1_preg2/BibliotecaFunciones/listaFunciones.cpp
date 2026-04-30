@@ -142,6 +142,23 @@ void invertirLista(Lista &listaTAD) {
     listaTAD.inicio = anterior;
 }
 
+NodoLista *invertirListaRecursivaAux(NodoLista *nodoInicio) {
+    //CASO BASE: Si llegamos al ultimo nodo
+    // ese nodo se convierte en la nueva cabeza de la lista invertida
+    if (nodoInicio->siguiente == nullptr) return nodoInicio;
+    //PARTE RECURSIVA
+    //  Le pedimos a la función que invierta el RESTO de la lista.
+    // 'nuevaCabeza' guardará el que era el último nodo de la lista original.
+    NodoLista *nuevaCabeza = invertirListaRecursivaAux(nodoInicio->siguiente);
+    nodoInicio->siguiente->siguiente = nodoInicio;
+    nodoInicio->siguiente = nullptr;
+    return nuevaCabeza;
+}
+
+void invertirListaRecursiva(Lista &listaTAD) {
+    listaTAD.inicio = invertirListaRecursivaAux(listaTAD.inicio);
+}
+
 
 void imprimirLista(const Lista &listaTAD) {
     NodoLista *ptr = listaTAD.inicio;

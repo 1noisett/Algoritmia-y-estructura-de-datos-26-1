@@ -36,26 +36,22 @@ void reordenarLista(Lista &listaTAD,int n,int k) {
         i++;
     }
     //Logica
-    if (nodoN->siguiente == nodoK) {
+    if (nodoN->siguiente == nodoK) {//Estan pegados
         if (prevN==nullptr) listaTAD.inicio = nodoK;
         else prevN->siguiente = nodoK;
 
         nodoN->siguiente = nodoK->siguiente;
         nodoK->siguiente = nodoN;
-    }else {
+    }else {                         //Estan separados
+        NodoLista *sigK = nodoK->siguiente;
         if (prevN==nullptr) {
             listaTAD.inicio = nodoK;
-            NodoLista *sigK = nodoK->siguiente;
-            nodoK->siguiente = nodoN->siguiente;
-            prevK->siguiente = nodoN;
-            nodoN->siguiente = sigK;
         }else {
-            NodoLista *sigK = nodoK->siguiente;
             prevN->siguiente = nodoK;
-            nodoK->siguiente = nodoN->siguiente;
-            prevK->siguiente = nodoN;
-            nodoN->siguiente = sigK;
         }
+        nodoK->siguiente = nodoN->siguiente;
+        prevK->siguiente = nodoN;
+        nodoN->siguiente = sigK;
     }
 }
 
