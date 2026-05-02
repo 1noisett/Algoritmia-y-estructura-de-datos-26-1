@@ -159,44 +159,45 @@ void invertirListaRecursiva(Lista &listaTAD) {
     listaTAD.inicio = invertirListaRecursivaAux(listaTAD.inicio);
 }
 
-void fusionarLista(Lista &listaTAD1,Lista &listaTAD2) {
-    NodoLista *p1 = listaTAD1.inicio;
-    NodoLista *p2 = listaTAD2.inicio;
-    NodoLista *previo = nullptr;
-
-    if (p2->elemento.dato<p1->elemento.dato) {
-        listaTAD1.inicio = p2;
-        p2 = p2->siguiente;
-        listaTAD1.inicio->siguiente = p1;
-        previo = listaTAD1.inicio;
-    }else {
-        previo = p1;
-        p1 = p1->siguiente;
-    }
-
-    while (p1 and p2) {
-        if (p2->elemento.dato<p1->elemento.dato) {
-            NodoLista *sigp2 = p2->siguiente;
-            previo->siguiente = p2;
-            p2->siguiente = p1;
-            previo = p2;// 'previo' se mueve al nodo recién insertado
-            p2 = sigp2;// p2 recupera su lista usando lo que guardamos
-        }else {
-            previo = p1;
-            p1 = p1->siguiente;
-        }
-    }
-
-    if (p2!=nullptr) {
-        previo->siguiente = p2;// Enganchamos todos los sobrantes al último nodo (previo)
-    }
-    listaTAD2.inicio = nullptr;
-}
+// void fusionarLista(Lista &listaTAD1,Lista &listaTAD2) {
+//     NodoLista *p1 = listaTAD1.inicio;
+//     NodoLista *p2 = listaTAD2.inicio;
+//     NodoLista *previo = nullptr;
+//
+//     if (p2->elemento.dato<p1->elemento.dato) {
+//         listaTAD1.inicio = p2;
+//         p2 = p2->siguiente;
+//         listaTAD1.inicio->siguiente = p1;
+//         previo = listaTAD1.inicio;
+//     }else {
+//         previo = p1;
+//         p1 = p1->siguiente;
+//     }
+//
+//     while (p1 and p2) {
+//         if (p2->elemento.dato<p1->elemento.dato) {
+//             NodoLista *sigp2 = p2->siguiente;
+//             previo->siguiente = p2;
+//             p2->siguiente = p1;
+//             previo = p2;// 'previo' se mueve al nodo recién insertado
+//             p2 = sigp2;// p2 recupera su lista usando lo que guardamos
+//         }else {
+//             previo = p1;
+//             p1 = p1->siguiente;
+//         }
+//     }
+//
+//     if (p2!=nullptr) {
+//         previo->siguiente = p2;// Enganchamos todos los sobrantes al último nodo (previo)
+//     }
+//     listaTAD2.inicio = nullptr;
+// }
 
 void imprimirLista(const Lista &listaTAD) {
     NodoLista *ptr = listaTAD.inicio;
     while (ptr) {
-        cout << ptr->elemento.codigoLibro << " - "<<ptr->elemento.nombre<<endl;
+        cout << "(" <<ptr->elemento.id << ","<<ptr->elemento.tipo_produccion<<") -> ";
         ptr = ptr->siguiente;
     }
+    cout << "nullptr"<< endl;
 }

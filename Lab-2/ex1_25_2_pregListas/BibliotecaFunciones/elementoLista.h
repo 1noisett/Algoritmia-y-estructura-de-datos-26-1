@@ -6,10 +6,7 @@
 #define LISTASFUNCIONES_ELEMENTOLISTA_H
 
 struct ElementoLista {
-    char codigoLibro[10];
-    char nombre[40];
-    int unidadesVendidas;
-    int cantidadLikes;
-    int dato;
+    int id;
+    char tipo_produccion;
 };
 #endif //LISTASFUNCIONES_ELEMENTOLISTA_H

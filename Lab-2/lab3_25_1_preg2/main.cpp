@@ -110,9 +110,7 @@ int main() {
     cout<<"\n\n";
     imprimirLista(listaTAD);
 
-
-
-    //invertir lista recursivo
+    
     //Fusionar lista
     return 0;
 }
