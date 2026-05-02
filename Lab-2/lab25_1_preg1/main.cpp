@@ -43,7 +43,7 @@ void reordenarLista(Lista &listaTAD) {
 
     // Unimos las sublistas
     if (nuevaCabezaPar==nullptr) {
-        listaTAD.inicio = nuevaColaImpar;
+        listaTAD.inicio = nuevaCabezaImpar;
     }else {
         listaTAD.inicio = nuevaCabezaPar;
         nuevaColaPar->siguiente = nuevaCabezaImpar;
