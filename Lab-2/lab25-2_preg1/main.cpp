@@ -36,8 +36,7 @@ void reordenaFormacion(Lista &listaTAD,string formacion[],int cantidadPosiciones
                 // Convertimos actual a un nodo independiente
                 actual->siguiente = nullptr;
                 if (nuevaCabeza==nullptr) {
-                    nuevaCabeza = actual;
-                    nuevaCola = actual;
+                    nuevaCabeza = nuevaCola = actual;
                 }else {
                     nuevaCola->siguiente = actual;
                     nuevaCola = actual;
@@ -79,47 +78,3 @@ int main() {
 
     return 0;
 }
-
-/*
-    NodoLista *ptr = listaTAD.inicio;
-    int cantidadJugadores = 0;
-    while (ptr) {
-        cantidadJugadores++;
-        ptr = ptr->siguiente;
-    }
-    int j = 0;
-    NodoLista *actual;
-    NodoLista *anterior;
-    NodoLista *ultimo;
-    while (j<cantidadPosiciones) {
-        actual = listaTAD.inicio;
-        anterior = nullptr;
-        // Buscamos el último nodo UNA VEZ al inicio del bucle de posiciones
-        ultimo = obtenerUltimoNodo(listaTAD);
-        for (int i = 0; i < cantidadJugadores; ++i) {
-            if (actual->elemento.posicion == formacion[j]) {
-                // 1. Guardamos el pase al siguiente nodo ANTES de desconectar
-                NodoLista *nodoSig = actual->siguiente;
-                NodoLista *nodoMover = actual;
-                // 2. Desconectamos el nodo de su posición original
-                if (anterior == nullptr) {
-                    listaTAD.inicio = actual->siguiente;
-                }else {
-                    anterior->siguiente = actual->siguiente;
-                }
-                // 3. Lo mandamos al fondo de la lista
-                nodoMover->siguiente = nullptr;
-                ultimo->siguiente = nodoMover;
-                // 4. Actualizamos quién es el nuevo último nodo
-                ultimo = nodoMover;
-                // 5. Avanzamos usando la copia de seguridad que guardamos
-                actual = nodoSig;
-            }else {
-                // Solo avanzamos si no hubo que mover nada
-                anterior = actual;
-                actual = actual->siguiente;
-            }
-        }
-        j++;
-    }
-* /
