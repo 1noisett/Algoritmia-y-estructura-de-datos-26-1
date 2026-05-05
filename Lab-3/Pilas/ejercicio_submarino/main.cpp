@@ -1,6 +1,6 @@
 #include <iostream>
-#include "PilasFunciones/BibliotecaPilas/funcionesPila.h"
-#include "PilasFunciones/BibliotecaPilas/Pila.h"
+#include "BibliotecaPilas/funcionesPila.h"
+#include "BibliotecaPilas/Pila.h"
 using namespace std;
 
 void submarino(Pila &pila,char orden[],int n) {

@@ -4,4 +4,4 @@ project(ejercicio_submarino)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(ejercicio_submarino main.cpp
-        PilasFunciones/BibliotecaPilas/funcionesPila.cpp)
+        BibliotecaPilas/funcionesPila.cpp)
