@@ -11,7 +11,6 @@ void pasaPila(Pila &origen,Pila &destino) {
         while (!esPilaVacia(origen)) {
             ElementoPila elemento = desapilar(origen);
             int n = 0;
-            //Desapilo los nodos del origen hasta quedar vacía
             while (!esPilaVacia(origen)) {
                 apilar(destino,elemento);
                 elemento = desapilar(origen);
