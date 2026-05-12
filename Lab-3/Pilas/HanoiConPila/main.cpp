@@ -47,7 +47,7 @@ void fusionarPilas(struct Pila & pilaA, struct Pila &pilaB, struct Pila &pilaC) 
     }
     while (!esPilaVacia(pilaB)) {
         cantElementosC = longitudPila(pilaC);
-        hanoi(cantElementosC,pilaC,pilaA,pilaA);
+        hanoi(cantElementosC,pilaC,pilaB,pilaA);
         apilar(pilaC,desapilar(pilaB));
         hanoi(cantElementosC,pilaA,pilaB,pilaC);
     }
