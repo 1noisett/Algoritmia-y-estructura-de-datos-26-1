@@ -6,7 +6,7 @@
 #define PILASFUNCIONES_ELEMENTOPILA_H
 
 struct ElementoPila {
-    int dato;
+    int numero;
 };
 
 #endif //PILASFUNCIONES_ELEMENTOPILA_H

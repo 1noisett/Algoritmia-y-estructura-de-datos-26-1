@@ -62,7 +62,7 @@ void imprimirPila(Pila &pilaTAD) {
     }else {
         NodoPila *actual = pilaTAD.inicio;
         while (actual) {
-            cout<<actual->elemento.dato<<"  ";
+            cout<<actual->elemento.numero<<"  ";
             actual = actual->siguiente;
         }
     }
