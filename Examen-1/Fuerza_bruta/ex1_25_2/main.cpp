@@ -92,7 +92,7 @@ int main() {
                 if (cromosoma[l]==1)
                     cout<<recurso[l].codigoAlerta<<" P"<<recurso[l].prioridad<<" | ";
             }
-
+            cout<<endl;
         }
     }
     delete[] cromosoma;
