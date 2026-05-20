@@ -43,45 +43,45 @@ void insertarFinal(Lista &listaTAD, const ElementoLista &elemento) {
     }
 }
 
-void insertarEnOrden(Lista &listaTAD,const ElementoLista &elemento) {
-    NodoLista *nuevo, *actual = listaTAD.inicio, *anterior = nullptr;
-    // Crear el nuevo nodo y asignar el elemento
-    nuevo = new NodoLista;
-    nuevo->elemento = elemento;
-    nuevo->siguiente = nullptr;
+// void insertarEnOrden(Lista &listaTAD,const ElementoLista &elemento) {
+//     NodoLista *nuevo, *actual = listaTAD.inicio, *anterior = nullptr;
+//     // Crear el nuevo nodo y asignar el elemento
+//     nuevo = new NodoLista;
+//     nuevo->elemento = elemento;
+//     nuevo->siguiente = nullptr;
+//
+//     // Recorremos la lista buscando la posición correcta. Nos detenemos cuando encontramos un nodo mayor al elemento
+//     while (actual and actual->elemento.dato <= elemento.dato) {
+//         anterior = actual;
+//         actual = actual->siguiente;
+//     }
+//
+//     // Insertamos el nuevo nodo:
+//     // el nuevo debe apuntar al nodo actual
+//     nuevo->siguiente = actual;
+//
+//     if (anterior == nullptr)
+//         listaTAD.inicio = nuevo;
+//     else
+//         anterior->siguiente = nuevo; // Caso general: enlazamos el nodo anterior con el nuevo
+// }
 
-    // Recorremos la lista buscando la posición correcta. Nos detenemos cuando encontramos un nodo mayor al elemento
-    while (actual and actual->elemento.dato <= elemento.dato) {
-        anterior = actual;
-        actual = actual->siguiente;
-    }
-
-    // Insertamos el nuevo nodo:
-    // el nuevo debe apuntar al nodo actual
-    nuevo->siguiente = actual;
-
-    if (anterior == nullptr)
-        listaTAD.inicio = nuevo;
-    else
-        anterior->siguiente = nuevo; // Caso general: enlazamos el nodo anterior con el nuevo
-}
-
-void eliminarNodo(Lista &listaTAD,const ElementoLista &elemento) {
-    NodoLista *actual = listaTAD.inicio;
-    NodoLista *anterior = nullptr;
-    while (actual and actual->elemento.dato != elemento.dato) {
-        anterior = actual;
-        actual = actual->siguiente;
-    }
-    if (actual==nullptr) return;
-
-    if (anterior==nullptr) {
-        listaTAD.inicio = actual->siguiente;
-    }else {
-        anterior->siguiente = actual->siguiente;
-    }
-    delete actual;
-}
+// void eliminarNodo(Lista &listaTAD,const ElementoLista &elemento) {
+//     NodoLista *actual = listaTAD.inicio;
+//     NodoLista *anterior = nullptr;
+//     while (actual and actual->elemento.dato != elemento.dato) {
+//         anterior = actual;
+//         actual = actual->siguiente;
+//     }
+//     if (actual==nullptr) return;
+//
+//     if (anterior==nullptr) {
+//         listaTAD.inicio = actual->siguiente;
+//     }else {
+//         anterior->siguiente = actual->siguiente;
+//     }
+//     delete actual;
+// }
 
 void eliminarLista(Lista &listaTAD) {
     NodoLista *actual = listaTAD.inicio;
@@ -98,8 +98,7 @@ void eliminarLista(Lista &listaTAD) {
 void imprimirLista(const Lista &listaTAD) {
     NodoLista *ptr = listaTAD.inicio;
     while (ptr) {
-        cout << ptr->elemento.dato << "->";
+        cout << ptr->elemento.codigo << " "<< ptr->elemento.cantidad << " " << ptr->elemento.prioridad << endl;
         ptr = ptr->siguiente;
     }
-    cout << "nullptr"<<endl;
 }

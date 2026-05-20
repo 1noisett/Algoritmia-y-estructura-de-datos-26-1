@@ -6,6 +6,8 @@
 #define LISTASFUNCIONES_ELEMENTOLISTA_H
 
 struct ElementoLista {
-    int dato;
+    int codigo;
+    int cantidad;
+    char prioridad;
 };
 #endif //LISTASFUNCIONES_ELEMENTOLISTA_H

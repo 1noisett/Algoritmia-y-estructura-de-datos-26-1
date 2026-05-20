@@ -13,7 +13,7 @@ void insertarFinal(Lista &listaTAD, const ElementoLista &elemento);
 void insertarEnOrden(Lista &listaTAD,const ElementoLista &elemento);
 void eliminarNodo(Lista &listaTAD,const ElementoLista &elemento);
 void eliminarLista(Lista &listaTAD);
-
+NodoLista *obtenerUltimoNodo(Lista &listaTAD);
 void imprimirLista(const Lista &listaTAD);
 
 
