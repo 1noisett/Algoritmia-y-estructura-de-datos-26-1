@@ -30,7 +30,7 @@ bool verificarOrden(int *llegada,int *solicitado,int n) {
 
 int main() {
     int llegada[] = {1,2,3,4};
-    int solicitado[] = {1,4,2,3};
+    int solicitado[] = {1,3,4,2};
 
     if (verificarOrden(llegada,solicitado,4)) {
         cout<<"Es posible"<<endl;
