@@ -1,3 +1,4 @@
+#include <cmath>
 #include <iostream>
 using namespace std;
 
@@ -53,15 +54,13 @@ int main() {
             if (cromosoma[j]==1) {tiempoCita1 += tiempoDiente; gananciaActual += gananciaDiente;}
             else if (cromosoma[j]==2) {tiempoCita2 += tiempoDiente; gananciaActual += gananciaDiente;}
             else if (cromosoma[j]==3){tiempoCita3 += tiempoDiente; gananciaActual += gananciaDiente;}
-
-            // Validación
-            if (tiempoCita1<=maxCita1 && tiempoCita2<=maxCita2 && tiempoCita3<=maxCita3) {
-                if (gananciaActual>maximoTotal) {
-                    maximoTotal = gananciaActual;
-                    combinacionGanadora = i;
-                }
+        }
+        // Validación
+        if (tiempoCita1<=maxCita1 && tiempoCita2<=maxCita2 && tiempoCita3<=maxCita3) {
+            if (gananciaActual>maximoTotal) {
+                maximoTotal = gananciaActual;
+                combinacionGanadora = i;
             }
-
         }
     }
     crearCromosoma(cromosoma,n,combinacionGanadora);
