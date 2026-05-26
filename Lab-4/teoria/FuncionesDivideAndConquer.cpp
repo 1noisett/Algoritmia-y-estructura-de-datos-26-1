@@ -5,7 +5,6 @@
 #include "FuncionesDivideAndConquer.h"
 #include <iostream>
 
-
 int binarySearch(int *array,int n,int num) {
     int inicio = 0;
     int fin = n-1;
@@ -42,7 +41,7 @@ void merge(int *arreglo, int inicio, int medio, int fin) {
         temp[i] = arreglo[inicio + i];
     }
     int izquierda = 0;
-    int derecha = medio - inicio + 1;
+    int derecha = medio + 1 - inicio;
     // medio - inicio -> último índice válido de la mitad izquierda
     // fin - inicio -> último índice válido de la mitad derecha
     for (int indice = 0; indice < size; ++indice) {
