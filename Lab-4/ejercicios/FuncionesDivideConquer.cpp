@@ -76,3 +76,39 @@ int contarCeros(int *arr, int n) {
     if (n==0 || arr[n-1] == 1) return 0;
     return n - buscarPrimerCero(arr,0,n-1);
 }
+
+int encontrarMinimo(int *arr,int inicio,int fin) {
+    // caso base
+    if (inicio==fin) return arr[inicio];
+    if (arr[fin] > arr[inicio]) return arr[inicio];
+
+    int mid = inicio + (fin - inicio)/2;
+    if (mid > 0 && arr[mid] < arr[mid-1]) {
+        return arr[mid];
+    }else {
+        if (arr[mid] < arr[fin]) {
+            return encontrarMinimo(arr,inicio,mid-1);
+        }else {
+            return encontrarMinimo(arr,mid+1,fin);
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

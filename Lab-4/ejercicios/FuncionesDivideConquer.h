@@ -11,3 +11,4 @@ int encontrarUnico(int *arr, int inicio, int fin);
 int contarCeros(int *arr, int inicio, int fin);
 int contarCeros(int *arr, int n);
 int contarCeros(int *arr, int n);
+int encontrarMinimo(int *arr,int inicio,int fin);

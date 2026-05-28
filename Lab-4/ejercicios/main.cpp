@@ -10,8 +10,15 @@ int main() {
     // cout<<"Posición del único elemento: "<<encontrarUnico(arr, 0,n-1)<<endl;
 
     // Contar ceros
-    int arr[] = {1,1,1,0,0,0,0};
+    // int arr[] = {1,1,1,0,0,0,0};
+    // int n = sizeof(arr)/sizeof(arr[0]);
+    // cout<<contarCeros(arr,n)<<endl;
+
+    // Encontrar mínimo
+    // casos extremos
+    // {1, 2, 3, 4, 5}
+    int arr[] = {1, 2, 3, 4, 5};
     int n = sizeof(arr)/sizeof(arr[0]);
-    cout<<contarCeros(arr,n)<<endl;
+    cout<<encontrarMinimo(arr,0,n-1)<<endl;
     return 0;
 }
