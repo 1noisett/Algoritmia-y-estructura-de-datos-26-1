@@ -38,6 +38,19 @@ int buscarUnicoElemento(int *arr,int inicio,int fin, int inicioZona) {
     }
 }
 
+// otra forma de encontrar la radiación máxima
+int encontrarValorMax(int *arr,int inicio,int fin) {
+    if (inicio==fin) return arr[inicio];
+
+    int medio = inicio + (fin-inicio)/2;
+    if (arr[medio] <= arr[medio+1]) {
+        return encontrarValorMax(arr,medio+1,fin);
+    }else {
+        return encontrarValorMax(arr,inicio,medio);
+    }
+}
+
+
 int main() {
     // int arr[] = {-1, 0, -1, 0, 1, 1, 2, 2, 3, 3, 4, 3, 3, 2, 2, 1, 1};
     int arr[] = {0, -1, 0, -1, 0, 1, 1, 2, 2, 3, 2, 2, 1, 1};
@@ -45,6 +58,6 @@ int main() {
 
     int indUltCero = primerPositivo(arr,0,n-1);
     int radiacionMaxima = buscarUnicoElemento(arr,indUltCero,n-1,indUltCero);
-    cout<<"La radiación empieza a "<<indUltCero<<" km. Potencia máxima "<<radiacionMaxima<<" megatones"<<endl;
+    cout<<"La radiación empieza a "<<indUltCero<<" km. Potencia máxima "<<encontrarValorMax(arr,indUltCero,n-1)<<" megatones"<<endl;
     return 0;
 }
