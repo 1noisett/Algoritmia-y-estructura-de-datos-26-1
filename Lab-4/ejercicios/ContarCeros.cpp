@@ -17,6 +17,6 @@ int buscarPrimerCero(int *arr, int inicio, int fin) {
 }
 
 int contarCeros(int *arr, int n) {
-    if (n==0 || arr[n-1] == 1) return 0;
+    if (arr[n-1] == 1) return 0;
     return n - buscarPrimerCero(arr,0,n-1);
 }
