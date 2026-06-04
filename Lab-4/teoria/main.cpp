@@ -12,21 +12,21 @@ using namespace std;
 
 int main() {
     // 1. BINARY SEARCH
-    // int array[] = {1,2,3,4,5,6,7,8,9,10};
-    // int n = sizeof(array)/sizeof(array[0]);
-    // int numEncontrar = 4;
-    // int indice = binarySearch(array,n,numEncontrar);
-    // cout << indice << endl;
+    int arr[] = {2, 5, 8, 12, 16, 23, 38, 56, 72, 91};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    int numEncontrar = 2;
+    int indice = binarySearch(arr,0,n-1,numEncontrar);
+    cout << indice << endl;
 
     // 2. MERGE SORT
-    int arreglo[] = {90,65,7,305,120,110,8};
-    int n = sizeof(arreglo)/sizeof(arreglo[0]);
-    imprimeArreglo(arreglo, n);
+    // int arreglo[] = {90,65,7,305,120,110,8};
+    // int n = sizeof(arreglo)/sizeof(arreglo[0]);
+    // imprimeArreglo(arreglo, n);
     // ordenamos el arreglo con complejidad n*log(n)
-    cout<<endl; cout<<"Ordenamos el arreglo usando Merge Sort con complejidad n*log(n)"<<endl;
-    mergeSort(arreglo, 0, n-1);
+    // cout<<endl; cout<<"Ordenamos el arreglo usando Merge Sort con complejidad n*log(n)"<<endl;
+    // mergeSort(arreglo, 0, n-1);
     // imprimimos el arreglo
     cout<<endl;
-    imprimeArreglo(arreglo, n);
+    imprimeArreglo(arr, n);
     return 0;
 }

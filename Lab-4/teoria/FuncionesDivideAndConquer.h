@@ -7,9 +7,9 @@
 
 #endif //TEORIA_FUNCIONESDIVIDEANDCONQUER_H
 
-int binarySearch(int *array,int n,int num);
+int binarySearch(int *arr,int inicio,int fin,int num);
 
-void mergeSort(int *arreglo,int inicio, int fin);
-void merge(int *arreglo, int inicio, int medio, int fin);
+void mergeSort(int *arr,int inicio, int fin);
+void merge(int *arr, int inicio, int medio, int fin);
 
 void imprimeArreglo(int arreglo[], int n);
