@@ -6,7 +6,7 @@
 #define FUNCIONESARBOLES_ELEMENTOARBOLBINARIO_H
 
 struct ElementoArbolBinario{
-    int numBin;
+    int bit;
     int valor;
 };
 
