@@ -32,6 +32,7 @@ bool esEquilibrado(const ArbolBinarioBusqueda &arbol);
 bool esEquilibradoRecursivo(NodoArbolBinarioBusqueda *nodo);
 void destruirArbolBinario(ArbolBinarioBusqueda &arbol);
 void destruirRecursivo(NodoArbolBinarioBusqueda *nodo);
+void imprimirNodo(NodoArbolBinarioBusqueda *nodo);
 
 void insertar(ArbolBinarioBusqueda &arbol,const ElementoArbolBinarioBusqueda &elemento);
 void insertarRecursivo(NodoArbolBinarioBusqueda *&raiz,const ElementoArbolBinarioBusqueda &elemento);

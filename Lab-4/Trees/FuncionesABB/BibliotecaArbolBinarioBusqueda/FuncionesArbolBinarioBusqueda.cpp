@@ -12,7 +12,7 @@ void insertar(ArbolBinarioBusqueda &arbol,const ElementoArbolBinarioBusqueda &el
 
 void insertarRecursivo(NodoArbolBinarioBusqueda *&raiz,const ElementoArbolBinarioBusqueda &elemento) {
     if (esNodoVacio(raiz)) {
-        plantarNodoArbolBinarioRecursivo(raiz,nullptr,elemento,nullptr);
+        plantarNodoArbolBinario(raiz,nullptr,elemento,nullptr);
     } else {
         int cmp = comparaElementos(raiz->elemento.dato,elemento.dato);
         if (cmp==1) {            // raiz mayor: insertar a la izquierda
@@ -82,7 +82,7 @@ NodoArbolBinarioBusqueda *eliminarRecursivo(NodoArbolBinarioBusqueda *nodo,const
         nodo->der = eliminarRecursivo(nodo->der,minNodo->elemento);
     }
     return nodo; // aplica para cmp 1, -1 y al caso de 2 hijos, donde el nodo no cambia de identidad
-                 // sigue siendo la misma posición en el árbol    
+                 // sigue siendo la misma posición en el árbol
 }
 
 NodoArbolBinarioBusqueda *minimoArbol(NodoArbolBinarioBusqueda *nodo) {
@@ -109,10 +109,10 @@ bool esNodoVacio(NodoArbolBinarioBusqueda *nodo) {
 
 void plantarArbolBinario(ArbolBinarioBusqueda &arbol,const ArbolBinarioBusqueda &izq,
                         const ElementoArbolBinarioBusqueda &elemento,const ArbolBinarioBusqueda &der) {
-    plantarNodoArbolBinarioRecursivo(arbol.raiz,izq.raiz,elemento,der.raiz);
+    plantarNodoArbolBinario(arbol.raiz,izq.raiz,elemento,der.raiz);
 }
 
-void plantarNodoArbolBinarioRecursivo(NodoArbolBinarioBusqueda *&nodo,NodoArbolBinarioBusqueda *izq,
+void plantarNodoArbolBinario(NodoArbolBinarioBusqueda *&nodo,NodoArbolBinarioBusqueda *izq,
                                     const ElementoArbolBinarioBusqueda &elemento,NodoArbolBinarioBusqueda *der) {
     NodoArbolBinarioBusqueda *nuevo = new NodoArbolBinarioBusqueda;
     nuevo->der = der;

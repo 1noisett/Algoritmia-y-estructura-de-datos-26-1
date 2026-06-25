@@ -6,25 +6,25 @@
 #include "FuncionesArbolBinarioBusqueda.h"
 using namespace std;
 
-void insertar(ArbolBinarioBusqueda &arbol,const ElementoArbolBinarioBusqueda &elemento) {
-    insertarRecursivo(arbol.raiz,elemento);
-}
+// void insertar(ArbolBinarioBusqueda &arbol,const ElementoArbolBinarioBusqueda &elemento) {
+//     insertarRecursivo(arbol.raiz,elemento);
+// }
 
-void insertarRecursivo(NodoArbolBinarioBusqueda *&raiz,const ElementoArbolBinarioBusqueda &elemento) {
-    if (esNodoVacio(raiz)) {
-        plantarNodoArbolBinarioRecursivo(raiz,nullptr,elemento,nullptr);
-    } else {
-        int cmp = comparaElementos(raiz->elemento.dato,elemento.dato);
-        if (cmp==1) {            // raiz mayor: insertar a la izquierda
-            insertarRecursivo(raiz->izq,elemento);
-        } else if (cmp==-1) {    // raiz menor: insertar a la derecha
-            insertarRecursivo(raiz->der,elemento);
-        } else {
-            // valores iguales: ya existe, no se inserta
-            cout<<"El elemento: "<<elemento.dato<<" ya se encuentra en el arbol"<<endl;
-        }
-    }
-}
+// void insertarRecursivo(NodoArbolBinarioBusqueda *&raiz,const ElementoArbolBinarioBusqueda &elemento) {
+//     if (esNodoVacio(raiz)) {
+//         plantarNodoArbolBinarioRecursivo(raiz,nullptr,elemento,nullptr);
+//     } else {
+//         int cmp = comparaElementos(raiz->elemento.dato,elemento.dato);
+//         if (cmp==1) {            // raiz mayor: insertar a la izquierda
+//             insertarRecursivo(raiz->izq,elemento);
+//         } else if (cmp==-1) {    // raiz menor: insertar a la derecha
+//             insertarRecursivo(raiz->der,elemento);
+//         } else {
+//             // valores iguales: ya existe, no se inserta
+//             cout<<"El elemento: "<<elemento.dato<<" ya se encuentra en el arbol"<<endl;
+//         }
+//     }
+// }
 
 int comparaElementos(int elemA,int elemB) {
     if (elemA==elemB) {
@@ -36,54 +36,54 @@ int comparaElementos(int elemA,int elemB) {
     }
 }
 
-bool buscar(const ArbolBinarioBusqueda &arbol,const ElementoArbolBinarioBusqueda &elemento) {
-    return buscarRecursivo(arbol.raiz,elemento);
-}
+// bool buscar(const ArbolBinarioBusqueda &arbol,const ElementoArbolBinarioBusqueda &elemento) {
+//     return buscarRecursivo(arbol.raiz,elemento);
+// }
 
-bool buscarRecursivo(NodoArbolBinarioBusqueda *nodo,const ElementoArbolBinarioBusqueda &elemento) {
-    if (esNodoVacio(nodo)) {
-        return false;
-    } else {
-        int cmp = comparaElementos(nodo->elemento.dato,elemento.dato);
-        if (cmp==0) {
-            return true;
-        } else if (cmp==1) {
-            return buscarRecursivo(nodo->izq,elemento);
-        } else {
-            return buscarRecursivo(nodo->der,elemento);
-        }
-    }
-}
+// bool buscarRecursivo(NodoArbolBinarioBusqueda *nodo,const ElementoArbolBinarioBusqueda &elemento) {
+//     if (esNodoVacio(nodo)) {
+//         return false;
+//     } else {
+//         int cmp = comparaElementos(nodo->elemento.dato,elemento.dato);
+//         if (cmp==0) {
+//             return true;
+//         } else if (cmp==1) {
+//             return buscarRecursivo(nodo->izq,elemento);
+//         } else {
+//             return buscarRecursivo(nodo->der,elemento);
+//         }
+//     }
+// }
 
-void eliminar(ArbolBinarioBusqueda &arbol,const ElementoArbolBinarioBusqueda &elemento) {
-    arbol.raiz = eliminarRecursivo(arbol.raiz,elemento);
-}
+// void eliminar(ArbolBinarioBusqueda &arbol,const ElementoArbolBinarioBusqueda &elemento) {
+//     arbol.raiz = eliminarRecursivo(arbol.raiz,elemento);
+// }
 
-NodoArbolBinarioBusqueda *eliminarRecursivo(NodoArbolBinarioBusqueda *nodo,const ElementoArbolBinarioBusqueda &elemento) {
-    if (esNodoVacio(nodo)) {
-        return nodo;
-    }
-    int cmp = comparaElementos(nodo->elemento.dato,elemento.dato);
-    if (cmp==1) {            // nodo mayor: el elemento esta a la izquierda
-        nodo->izq = eliminarRecursivo(nodo->izq,elemento);
-    }else if (cmp==-1) {     // nodo menor: el elemento esta a la derecha
-        nodo->der = eliminarRecursivo(nodo->der,elemento);
-    }else if (esNodoVacio(nodo->izq)) {    // encontrado, 0 o 1 hijo (derecha)
-        NodoArbolBinarioBusqueda *hijo = nodo->der;
-        delete nodo;
-        return hijo;
-    }else if (esNodoVacio(nodo->der)){
-        NodoArbolBinarioBusqueda *hijo = nodo->izq;
-        delete nodo;
-        return hijo;
-    }else {                                // encontrado, 2 hijos
-        NodoArbolBinarioBusqueda *minNodo = minimoArbol(nodo->der);
-        nodo->elemento = minNodo->elemento;
-        nodo->der = eliminarRecursivo(nodo->der,minNodo->elemento);
-    }
-    return nodo; // aplica para cmp 1, -1 y al caso de 2 hijos, donde el nodo no cambia de identidad
-                 // sigue siendo la misma posición en el árbol    
-}
+// NodoArbolBinarioBusqueda *eliminarRecursivo(NodoArbolBinarioBusqueda *nodo,const ElementoArbolBinarioBusqueda &elemento) {
+//     if (esNodoVacio(nodo)) {
+//         return nodo;
+//     }
+//     int cmp = comparaElementos(nodo->elemento.dato,elemento.dato);
+//     if (cmp==1) {            // nodo mayor: el elemento esta a la izquierda
+//         nodo->izq = eliminarRecursivo(nodo->izq,elemento);
+//     }else if (cmp==-1) {     // nodo menor: el elemento esta a la derecha
+//         nodo->der = eliminarRecursivo(nodo->der,elemento);
+//     }else if (esNodoVacio(nodo->izq)) {    // encontrado, 0 o 1 hijo (derecha)
+//         NodoArbolBinarioBusqueda *hijo = nodo->der;
+//         delete nodo;
+//         return hijo;
+//     }else if (esNodoVacio(nodo->der)){
+//         NodoArbolBinarioBusqueda *hijo = nodo->izq;
+//         delete nodo;
+//         return hijo;
+//     }else {                                // encontrado, 2 hijos
+//         NodoArbolBinarioBusqueda *minNodo = minimoArbol(nodo->der);
+//         nodo->elemento = minNodo->elemento;
+//         nodo->der = eliminarRecursivo(nodo->der,minNodo->elemento);
+//     }
+//     return nodo; // aplica para cmp 1, -1 y al caso de 2 hijos, donde el nodo no cambia de identidad
+//                  // sigue siendo la misma posición en el árbol
+// }
 
 NodoArbolBinarioBusqueda *minimoArbol(NodoArbolBinarioBusqueda *nodo) {
     if (esNodoVacio(nodo)) {
@@ -122,7 +122,7 @@ void plantarNodoArbolBinarioRecursivo(NodoArbolBinarioBusqueda *&nodo,NodoArbolB
 }
 
 void imprimirNodo(NodoArbolBinarioBusqueda *nodo) {
-    cout<<setw(5)<<left<<nodo->elemento.dato;
+    cout<<nodo->elemento.year<<"-"<<nodo->elemento.cantidad<<"  ";
 }
 
 void recorrerPreOrder(const ArbolBinarioBusqueda &arbol) {
