@@ -4,4 +4,5 @@ project(lab4_24_2_vinos)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(lab4_24_2_vinos main.cpp
-        BibliotecaArbolBinarioBusqueda/FuncionesArbolBinarioBusqueda.cpp)
+        BibliotecaArbolBinarioBusqueda/FuncionesArbolBinarioBusqueda.cpp
+        BibliotecaPilas/funcionesPila.cpp)

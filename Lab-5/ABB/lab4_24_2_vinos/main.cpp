@@ -1,6 +1,8 @@
 #include <iostream>
 #include "BibliotecaArbolBinarioBusqueda/ArbolBinarioBusqueda.h"
 #include "BibliotecaArbolBinarioBusqueda/FuncionesArbolBinarioBusqueda.h"
+#include "BibliotecaPilas/funcionesPila.h"
+#include "BibliotecaPilas/Pila.h"
 using namespace std;
 
 void ingresarLoteRecursivo(NodoArbolBinarioBusqueda *&nodo,const ElementoArbolBinarioBusqueda &elemento) {
@@ -23,16 +25,45 @@ void ingresaLote(ArbolBinarioBusqueda &arbol,const ElementoArbolBinarioBusqueda 
     ingresarLoteRecursivo(arbol.raiz,elemento);
 }
 
-void reporteRecursivo(NodoArbolBinarioBusqueda *nodo) {
-    if (!esNodoVacio(nodo)) {
-        reporteRecursivo(nodo->der);
-        imprimirNodo(nodo);
-        reporteRecursivo(nodo->izq);
+NodoArbolBinarioBusqueda *buscarNodoIterativo(ArbolBinarioBusqueda &arbol,int year) {
+    NodoArbolBinarioBusqueda *actual = arbol.raiz;
+    while (actual && actual->elemento.year!=year) {
+        if (comparaElementos(actual->elemento.year,year)==1) {
+            actual = actual->izq;
+        }else {
+            actual = actual->der;
+        }
     }
+    return actual;
 }
 
-void reporte(ArbolBinarioBusqueda &arbol) {
-    reporteRecursivo(arbol.raiz);
+void generarReporte(ArbolBinarioBusqueda &arbol) {
+    if (esArbolVacio(arbol)) return;
+
+    Pila pila;
+    construirPila(pila);
+    ElementoPila elemento; // aquí guardaré cada dato(año+cantidad) que desapile
+    NodoArbolBinarioBusqueda *actual = arbol.raiz;
+    while (true) {
+        // (1) bajar todo a la derecha, apilando cada nodo que obtengo
+        // como vou a la derecha apilo años de menor a mayor -> el mayor queda en la cima
+        while (actual) {
+            ElementoPila e;
+            e.year = actual->elemento.year;
+            e.cantidad = actual->elemento.cantidad;
+            apilar(pila,e);
+            actual = actual->der; // sigo bajando a la derecha
+        }
+        // al salir del while actual es nullptr y en la cima está el año más grande
+        // (2) desapilar e imprimir el de la cima(el mayor) -> orden descendente
+        elemento = desapilar(pila);
+        cout<<elemento.year<<"-"<<elemento.cantidad<<" ";
+        // (3) moverme al subárbol izquierdo del nodo que acabo de imprimir
+        actual = buscarNodoIterativo(arbol,elemento.year)->izq;
+        // si la pila esta vacía y tampoco hay subárbol izquierdo por explorar, terminé todos los nodos
+        if (esPilaVacia(pila) && actual==nullptr) break;
+    }
+    cout<<endl;
 }
 
 
@@ -48,6 +79,6 @@ int main() {
     ingresaLote(arbol,{2023,200});
     ingresaLote(arbol,{2020,75});
 
-    reporte(arbol);
+    generarReporte(arbol);
     return 0;
 }

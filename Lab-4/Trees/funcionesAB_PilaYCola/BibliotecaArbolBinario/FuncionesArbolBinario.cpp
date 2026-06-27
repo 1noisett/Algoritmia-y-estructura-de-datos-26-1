@@ -150,27 +150,50 @@ void destruirRecursivo(NodoArbolBinario *nodo) {
 }
 
 void imprimirNodo(NodoArbolBinario *raiz) {
-    cout<<setw(5)<<raiz->elemento.numero;
+    cout<<left<<setw(5)<<raiz->elemento.letra;
 }
 
 // NUEVAS FUNCIONES RECORRER AB CON PILA Y COLA
 
-void reccorrerPorNiveles(ArbolBinario &arbol) {
+void recorrerPorNiveles(ArbolBinario &arbol) {
     Cola cola;
-    construirCola(cola);
-    if (!esArbolVacio(arbol)) {
-        encolar(cola,arbol.raiz);
+    construirCola(cola);                 // 1. crear la cola vacía
+    if (!esArbolVacio(arbol)) {          // 2. si hay árbol...
+        encolar(cola,arbol.raiz);        // 3. meter la raíz a la fila
+        while (!esColaVacia(cola)) {        // 4. mientras quede alguien en la fila
+            NodoArbolBinario *nodo = desencolar(cola);  // 5. sacar al de adelante
+            imprimirNodo(nodo);                            // 6. imprimirlo
+            if (!esNodoVacio(nodo->izq)) encolar(cola,nodo->izq); // 7. meter hijo izq (si existe)
+            if (!esNodoVacio(nodo->der)) encolar(cola,nodo->der); // 8. meter hijo der (si existe)
+        }
+    }
+    destruir(cola); // 9. liberar la cola
+}
+
+void recorrerPorNivelCambioLinea(ArbolBinario &arbol) {
+    Cola cola;
+    construirCola(cola);            // 1. crear la fila vacía
+    if (!esArbolVacio(arbol)) {     // 2. si el árbol tiene algo...
+        encolar(cola,arbol.raiz);   // 3. meter la raíz a la fila
+        encolar(cola,nullptr);  // 4. meter la bandera de "fin de nivel 0"
+                                           // 5. la fila queda: [raíz,0]
         while (!esColaVacia(cola)) {
             NodoArbolBinario *nodo = desencolar(cola);
-            imprimirNodo(nodo);
-            if (!esNodoVacio(nodo->izq)) encolar(cola,nodo->izq);
-            if (!esNodoVacio(nodo->der)) encolar(cola,nodo->der);
+
+            if (nodo==nullptr) {                         // 6. terminó un nivel
+                cout<<endl;                             // 6a. salto de línea
+                if (!esColaVacia(cola)) {              // 6b. si aún quedan nodos (otro nivel por venir)...
+                    encolar(cola,nullptr); // 6c. pongo una bandera nueva al final
+                }
+            }else {
+                imprimirNodo(nodo);
+                if (!esNodoVacio(nodo->izq)) encolar(cola,nodo->izq);
+                if (!esNodoVacio(nodo->der)) encolar(cola,nodo->der);
+            }
         }
     }
     destruir(cola);
 }
-
-
 
 
 

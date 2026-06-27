@@ -37,6 +37,9 @@ bool esEquilibradoRecursivo(NodoArbolBinario *nodo);
 void destruirArbolBinario(ArbolBinario &arbol);
 void destruirRecursivo(NodoArbolBinario *nodo);
 
+void recorrerPorNiveles(ArbolBinario &arbol);
+void recorrerPorNivelCambioLinea(ArbolBinario &arbol);
+
 void imprimirNodo(NodoArbolBinario *raiz);
 
 #endif //FUNCIONESARBOLES_FUNCIONESARBOLBINARIO_H

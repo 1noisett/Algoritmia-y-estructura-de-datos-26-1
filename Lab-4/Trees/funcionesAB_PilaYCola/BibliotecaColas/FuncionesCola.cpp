@@ -67,7 +67,7 @@ void imprimir(const Cola & colaTAD) {
             if ( not estaImprimiendoLaCabeza)
                 cout << ", ";
             estaImprimiendoLaCabeza = 0;
-            cout << recorrido->elemento.dato;
+            cout << recorrido->nodo->elemento.letra;
             recorrido = recorrido->siguiente;
         }
         cout << "]" << endl;
