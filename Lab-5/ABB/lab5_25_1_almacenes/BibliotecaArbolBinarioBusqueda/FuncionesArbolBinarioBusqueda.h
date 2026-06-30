@@ -34,12 +34,12 @@ void destruirArbolBinario(ArbolBinarioBusqueda &arbol);
 void destruirRecursivo(NodoArbolBinarioBusqueda *nodo);
 void imprimirNodo(NodoArbolBinarioBusqueda *nodo);
 
-// void insertar(ArbolBinarioBusqueda &arbol,const ElementoArbolBinarioBusqueda &elemento);
-// void insertarRecursivo(NodoArbolBinarioBusqueda *&raiz,const ElementoArbolBinarioBusqueda &elemento);
+void insertar(ArbolBinarioBusqueda &arbol,const ElementoArbolBinarioBusqueda &elemento);
+void insertarRecursivo(NodoArbolBinarioBusqueda *&raiz,const ElementoArbolBinarioBusqueda &elemento);
 int comparaElementos(int elemA,int elemB);
-// bool buscarRecursivo(NodoArbolBinarioBusqueda *nodo,const ElementoArbolBinarioBusqueda &elemento);
-// bool buscar(const ArbolBinarioBusqueda &arbol,const ElementoArbolBinarioBusqueda &elemento);
-// void eliminar(ArbolBinarioBusqueda &arbol,const ElementoArbolBinarioBusqueda &elemento);
+bool buscarRecursivo(NodoArbolBinarioBusqueda *nodo,const ElementoArbolBinarioBusqueda &elemento);
+bool buscar(const ArbolBinarioBusqueda &arbol,const ElementoArbolBinarioBusqueda &elemento);
+void eliminar(ArbolBinarioBusqueda &arbol,const ElementoArbolBinarioBusqueda &elemento);
 NodoArbolBinarioBusqueda *eliminarRecursivo(NodoArbolBinarioBusqueda *nodo,const ElementoArbolBinarioBusqueda &elemento);
 NodoArbolBinarioBusqueda *minimoArbol(NodoArbolBinarioBusqueda *nodo);
 

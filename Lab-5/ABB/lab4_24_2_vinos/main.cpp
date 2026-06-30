@@ -46,7 +46,7 @@ void generarReporte(ArbolBinarioBusqueda &arbol) {
     NodoArbolBinarioBusqueda *actual = arbol.raiz;
     while (true) {
         // (1) bajar todo a la derecha, apilando cada nodo que obtengo
-        // como vou a la derecha apilo años de menor a mayor -> el mayor queda en la cima
+        // como voy a la derecha apilo años de menor a mayor -> el mayor queda en la cima
         while (actual) {
             ElementoPila e;
             e.year = actual->elemento.year;

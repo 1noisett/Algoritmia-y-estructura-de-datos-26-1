@@ -6,8 +6,7 @@
 #define FUNCIONESABB_ELEMENTOARBOLBINARIOBUSQUEDA_H
 
 struct ElementoArbolBinarioBusqueda {
-    char flag;
-    int idServidor;
+    int codAlmacen;
 };
 
 #endif //FUNCIONESABB_ELEMENTOARBOLBINARIOBUSQUEDA_H
