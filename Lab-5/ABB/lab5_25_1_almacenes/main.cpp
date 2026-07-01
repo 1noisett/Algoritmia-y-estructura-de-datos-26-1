@@ -22,6 +22,20 @@ void recorrerPorNiveles(ArbolBinarioBusqueda &arbol) {
     }
 }
 
+void recorrrerPorNiveles(ArbolBinarioBusqueda &arbol) {
+    Cola cola;
+    construirCola(cola);
+    if (!esArbolVacio(arbol)) {
+        encolar(cola,arbol.raiz);
+        while (!esColaVacia(cola)) {
+            NodoArbolBinarioBusqueda *nodo = desencolar(cola);
+            imprimirNodo(nodo);
+            if (nodo->izq) encolar(cola,nodo->izq);
+            if (nodo->der) encolar(cola,nodo->der);
+        }
+    }
+}
+
 
 int main() {
     ArbolBinarioBusqueda arbol;
