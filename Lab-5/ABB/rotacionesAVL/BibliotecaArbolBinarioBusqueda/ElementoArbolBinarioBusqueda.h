@@ -6,7 +6,8 @@
 #define FUNCIONESABB_ELEMENTOARBOLBINARIOBUSQUEDA_H
 
 struct ElementoArbolBinarioBusqueda {
-    int numero;
+    int dni;
+    int altura;
 };
 
 #endif //FUNCIONESABB_ELEMENTOARBOLBINARIOBUSQUEDA_H

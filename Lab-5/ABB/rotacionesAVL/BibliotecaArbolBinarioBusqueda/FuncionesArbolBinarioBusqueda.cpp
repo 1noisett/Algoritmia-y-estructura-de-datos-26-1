@@ -1,10 +1,104 @@
 //
 // Created by Miguel Bazan on 23/06/26.
 //
-#include <iomanip>
 #include <iostream>
 #include "FuncionesArbolBinarioBusqueda.h"
 using namespace std;
+
+// FUNCIONES DEL EJERCICIO
+
+int ALTURA(NodoArbolBinarioBusqueda *nodo) {
+    if (esNodoVacio(nodo)) {
+        return 0;
+    }else {
+        return nodo->elemento.altura;
+    }
+}
+
+int FACTOR_BALANCE(NodoArbolBinarioBusqueda *nodo) {
+    if (esNodoVacio(nodo)) {
+        return 0;
+    }
+    int alturaIzq = 0, alturaDer = 0;
+    alturaIzq = ALTURA(nodo->izq);
+    alturaDer = ALTURA(nodo->der);
+    return alturaIzq-alturaDer;
+}
+
+NodoArbolBinarioBusqueda *rotacionDerecha(NodoArbolBinarioBusqueda *y) {
+    NodoArbolBinarioBusqueda *x = y->izq;
+    NodoArbolBinarioBusqueda *T2 = x->der;
+
+    // rotar
+    x->der = y;
+    y->izq = T2;
+
+    // actualizar alturas
+    y->elemento.altura = 1 + maximo(ALTURA(y->izq),ALTURA(y->der));
+    x->elemento.altura = 1 + maximo(ALTURA(x->izq),ALTURA(x->der));
+
+    return x;
+}
+
+NodoArbolBinarioBusqueda *rotacionIzquierda(NodoArbolBinarioBusqueda *x) {
+    NodoArbolBinarioBusqueda *y = x->der;
+    NodoArbolBinarioBusqueda *T2 = y->izq;
+
+    // rotar
+    y->izq = x;
+    x->der = T2;
+
+    // actualizar alturas
+    x->elemento.altura = 1 + maximo(ALTURA(x->izq),ALTURA(x->der));
+    y->elemento.altura = 1 + maximo(ALTURA(y->izq),ALTURA(y->der));
+
+    return y;
+}
+
+NodoArbolBinarioBusqueda *insertarAVLRecursivo(NodoArbolBinarioBusqueda *nodo,int clave) {
+    // caso base: se planta una hoja nueva con altura 1
+    if (esNodoVacio(nodo)) {
+        plantarNodoArbolBinario(nodo,nullptr,{clave,1},nullptr);
+        return nodo;
+    }
+
+    // insercion ABB normal, reasignando el hijo por si una rotacion cambio su raiz
+    if (clave < nodo->elemento.dni) {
+        nodo->izq = insertarAVLRecursivo(nodo->izq,clave);
+    }else if (clave > nodo->elemento.dni) {
+        nodo->der = insertarAVLRecursivo(nodo->der,clave);
+    }else {
+        return nodo;    // clave igual, no se insertan duplicados
+    }
+
+    // 1) actualizar altura del nodo actual
+    nodo->elemento.altura = 1 + maximo(ALTURA(nodo->izq),ALTURA(nodo->der));
+
+    // 2) calcular factor de balance
+    int FB = FACTOR_BALANCE(nodo);
+
+    // 3) revisar los 4 casos
+    if (FB > 1 && clave < nodo->izq->elemento.dni) {       // caso LL
+        return rotacionDerecha(nodo);
+    }
+    if (FB < -1 && clave > nodo->der->elemento.dni) {      // caso RR
+        return rotacionIzquierda(nodo);
+    }
+    if (FB > 1 && clave > nodo->izq->elemento.dni) {       // caso LR
+        nodo->izq = rotacionIzquierda(nodo->izq);
+        return rotacionDerecha(nodo);
+    }
+    if (FB < -1 && clave < nodo->der->elemento.dni) {      // caso RL
+        nodo->der = rotacionDerecha(nodo->der);
+        return rotacionIzquierda(nodo);
+    }
+
+    return nodo;    // sin desbalance: el nodo sigue siendo la raiz del subarbol
+}
+
+void insertarAVL(ArbolBinarioBusqueda &arbol,int clave) {
+    arbol.raiz = insertarAVLRecursivo(arbol.raiz,clave);
+}
 
 void insertar(ArbolBinarioBusqueda &arbol,const ElementoArbolBinarioBusqueda &elemento) {
     insertarRecursivo(arbol.raiz,elemento);
@@ -14,14 +108,14 @@ void insertarRecursivo(NodoArbolBinarioBusqueda *&raiz,const ElementoArbolBinari
     if (esNodoVacio(raiz)) {
         plantarNodoArbolBinario(raiz,nullptr,elemento,nullptr);
     } else {
-        int cmp = comparaElementos(raiz->elemento.numero,elemento.numero);
+        int cmp = comparaElementos(raiz->elemento.dni,elemento.dni);
         if (cmp==1) {            // raiz mayor: insertar a la izquierda
             insertarRecursivo(raiz->izq,elemento);
         } else if (cmp==-1) {    // raiz menor: insertar a la derecha
             insertarRecursivo(raiz->der,elemento);
         } else {
             // valores iguales: ya existe, no se inserta
-            cout<<"El elemento: "<<elemento.numero<<" ya se encuentra en el arbol"<<endl;
+            cout<<"El elemento: "<<elemento.dni<<" ya se encuentra en el arbol"<<endl;
         }
     }
 }
@@ -44,7 +138,7 @@ bool buscarRecursivo(NodoArbolBinarioBusqueda *nodo,const ElementoArbolBinarioBu
     if (esNodoVacio(nodo)) {
         return false;
     } else {
-        int cmp = comparaElementos(nodo->elemento.numero,elemento.numero);
+        int cmp = comparaElementos(nodo->elemento.dni,elemento.dni);
         if (cmp==0) {
             return true;
         } else if (cmp==1) {
@@ -63,7 +157,7 @@ NodoArbolBinarioBusqueda *eliminarRecursivo(NodoArbolBinarioBusqueda *nodo,const
     if (esNodoVacio(nodo)) {
         return nodo;
     }
-    int cmp = comparaElementos(nodo->elemento.numero,elemento.numero);
+    int cmp = comparaElementos(nodo->elemento.dni,elemento.dni);
     if (cmp==1) {            // nodo mayor: el elemento esta a la izquierda
         nodo->izq = eliminarRecursivo(nodo->izq,elemento);
     }else if (cmp==-1) {     // nodo menor: el elemento esta a la derecha
@@ -122,7 +216,7 @@ void plantarNodoArbolBinario(NodoArbolBinarioBusqueda *&nodo,NodoArbolBinarioBus
 }
 
 void imprimirNodo(NodoArbolBinarioBusqueda *nodo) {
-    cout<<setw(5)<<left<<nodo->elemento.numero;
+    cout<<nodo->elemento.dni<<"(h:"<<nodo->elemento.altura<<") ";
 }
 
 void recorrerPreOrder(const ArbolBinarioBusqueda &arbol) {

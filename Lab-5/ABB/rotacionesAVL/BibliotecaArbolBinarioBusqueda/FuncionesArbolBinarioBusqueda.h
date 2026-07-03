@@ -6,6 +6,14 @@
 #define FUNCIONESABB_FUNCIONESARBOLBINARIOBUSQUEDA_H
 #include "ArbolBinarioBusqueda.h"
 
+// funciones del ejercicio AVL
+int ALTURA(NodoArbolBinarioBusqueda *nodo);
+int FACTOR_BALANCE(NodoArbolBinarioBusqueda *nodo);
+NodoArbolBinarioBusqueda *rotacionDerecha(NodoArbolBinarioBusqueda *y);
+NodoArbolBinarioBusqueda *rotacionIzquierda(NodoArbolBinarioBusqueda *x);
+NodoArbolBinarioBusqueda *insertarAVLRecursivo(NodoArbolBinarioBusqueda *nodo,int clave);
+void insertarAVL(ArbolBinarioBusqueda &arbol,int clave);
+
 void construir(ArbolBinarioBusqueda &arbol);
 bool esArbolVacio(const ArbolBinarioBusqueda &arbol);
 bool esNodoVacio(NodoArbolBinarioBusqueda *nodo);
