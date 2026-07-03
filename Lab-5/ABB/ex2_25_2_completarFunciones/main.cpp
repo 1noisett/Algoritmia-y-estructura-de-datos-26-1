@@ -1,7 +1,12 @@
 #include <iostream>
+#include "BibliotecaArbolBinarioBusqueda/ArbolBinarioBusqueda.h"
+#include "BibliotecaArbolBinarioBusqueda/FuncionesArbolBinarioBusqueda.h"
+
 using namespace std;
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    ArbolBinarioBusqueda arbol;
+    construir(arbol);
+
     return 0;
 }
