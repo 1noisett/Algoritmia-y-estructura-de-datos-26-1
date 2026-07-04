@@ -6,6 +6,10 @@
 #define FUNCIONESABB_FUNCIONESARBOLBINARIOBUSQUEDA_H
 #include "ArbolBinarioBusqueda.h"
 
+int tamanoNodo(NodoArbolBinarioBusqueda *nodo);
+int k_esimo_menor(NodoArbolBinarioBusqueda *raiz,int k);
+double mediana(NodoArbolBinarioBusqueda *raiz);
+
 void construir(ArbolBinarioBusqueda &arbol);
 bool esArbolVacio(const ArbolBinarioBusqueda &arbol);
 bool esNodoVacio(NodoArbolBinarioBusqueda *nodo);
@@ -35,7 +39,7 @@ void destruirRecursivo(NodoArbolBinarioBusqueda *nodo);
 void imprimirNodo(NodoArbolBinarioBusqueda *nodo);
 
 void insertar(ArbolBinarioBusqueda &arbol,const ElementoArbolBinarioBusqueda &elemento);
-void insertarRecursivo(NodoArbolBinarioBusqueda *&raiz,const ElementoArbolBinarioBusqueda &elemento);
+void insertarRecursivo(NodoArbolBinarioBusqueda *&nodo,const ElementoArbolBinarioBusqueda &elemento);
 int comparaElementos(int elemA,int elemB);
 bool buscarRecursivo(NodoArbolBinarioBusqueda *nodo,const ElementoArbolBinarioBusqueda &elemento);
 bool buscar(const ArbolBinarioBusqueda &arbol,const ElementoArbolBinarioBusqueda &elemento);

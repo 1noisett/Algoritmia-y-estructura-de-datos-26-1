@@ -7,6 +7,7 @@
 
 struct ElementoArbolBinarioBusqueda {
     int numero;
+    int size;
 };
 
 #endif //FUNCIONESABB_ELEMENTOARBOLBINARIOBUSQUEDA_H
