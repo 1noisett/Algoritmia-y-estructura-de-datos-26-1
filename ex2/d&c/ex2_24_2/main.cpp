@@ -38,6 +38,20 @@ int encontrarUltimoIndice(Producto *arr,int inicio,int fin,int cantidad) {
     }
 }
 
+// Estrategia: divide y vencerás cerrando rango por la derecha.
+// medio con techo (+1) garantiza medio > inicio, así (medio, fin) siempre reduce.
+int encontrarUltimoIndiceSegVersion(Producto *arr, int inicio, int fin, int cantidad) {
+    if (inicio == fin) {
+        if (arr[inicio].cantidad == cantidad) return inicio;
+        return -1;
+    }
+    int medio = inicio + (fin - inicio + 1) / 2;  // techo
+    if (arr[medio].cantidad <= cantidad)
+        return encontrarUltimoIndice(arr, medio, fin, cantidad);      // medio puede ser respuesta
+    else
+        return encontrarUltimoIndice(arr, inicio, medio - 1, cantidad); // medio queda descartado
+}
+
 
 int main() {
     Producto productos[] = {
