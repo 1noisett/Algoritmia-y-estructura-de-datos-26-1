@@ -7,6 +7,7 @@
 
 struct ElementoCola {
     int dato;
+    char prioridad;
 };
 
 #endif //FUNCIONESCOLAS_ELEMENTOCOLA_H

@@ -3,4 +3,5 @@ project(cola_prioridad)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(cola_prioridad main.cpp)
+add_executable(cola_prioridad main.cpp
+        BibliotecaColas/FuncionesCola.cpp)

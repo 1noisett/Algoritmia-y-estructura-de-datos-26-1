@@ -7,8 +7,9 @@
 #include "NodoCola.h"
 
 struct Cola {
-  NodoCola *inicio;
-  NodoCola *fin;
+  NodoCola *head;
+  NodoCola *tail;
+  NodoCola *last1;
   int longitud;
 };
 
