@@ -12,6 +12,7 @@ using namespace std;
 void construirCola(Cola &colaTAD) {
     colaTAD.head = nullptr;
     colaTAD.tail = nullptr;
+    colaTAD.last1 = nullptr;
     colaTAD.longitud = 0;
 }
 
