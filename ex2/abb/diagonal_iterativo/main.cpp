@@ -16,7 +16,7 @@ void diagonalConNodos(NodoArbolBinarioBusqueda *nodo) {
     while (!esColaVacia(cola)) {
         NodoArbolBinarioBusqueda *actual = desencolar(cola);
         while (actual) {
-
+            cout<<
         }
     }
 }
