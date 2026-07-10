@@ -72,6 +72,33 @@ void recorrerPorNiveles(ArbolBinarioBusqueda &arbol) {
     }
 }
 
+// RECORRER POR NIVELES INVERSO (amplitud inversa)
+// Estrategia: recorrido por niveles con cola, pero en vez de imprimir cada
+// nodo se apila. Al vaciar la pila al final, el orden queda invertido:
+// los niveles salen de abajo hacia arriba. Se encola der,izq para que,
+// tras la inversion de la pila, cada nivel salga de izq a der.
+// Cada nodo pasa una vez por la cola y una por la pila -> O(N).
+void recorrerPorNivelesInverso(ArbolBinarioBusqueda &arbol) {
+    if (esArbolVacio(arbol)) return;
+
+    Cola cola;
+    Pila pila;
+    construirCola(cola);
+    construirPila(pila);
+
+    encolar(cola,arbol.raiz);
+    while (!esColaVacia(cola)) {
+        NodoArbolBinarioBusqueda *nodo = desencolar(cola);
+        apilar(pila,nodo);                  // se imprime al final, invertido
+        if (!esNodoVacio(nodo->der)) encolar(cola,nodo->der);
+        if (!esNodoVacio(nodo->izq)) encolar(cola,nodo->izq);
+    }
+    while (!esPilaVacia(pila)) {
+        imprimirNodo(desapilar(pila));
+    }
+}
+
+
 // RECORRER ZIG ZAG
 void recorrerZigZag(ArbolBinarioBusqueda &arbol) {
     Pila pilaActual,pilaSig;
@@ -143,21 +170,18 @@ int main() {
     // insertar(arbol,{19});
     // recorrerZigZag(arbol);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    // RECORRER POR NIVELES INVERSO (amplitud inversa)
+    insertar(arbol,{9});
+    insertar(arbol,{4});
+    insertar(arbol,{1});
+    insertar(arbol,{6});
+    insertar(arbol,{14});
+    insertar(arbol,{11});
+    insertar(arbol,{16});
+    insertar(arbol,{19});
+    recorrerPorNiveles(arbol);          // esperado: 9  4 14  1 6 11 16  19
+    cout<<endl<<endl;
+    recorrerPorNivelesInverso(arbol);   // esperado: 19  1 6 11 16  4 14  9
 
 
     return 0;

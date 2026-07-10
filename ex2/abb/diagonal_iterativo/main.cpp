@@ -8,15 +8,17 @@
 #include "BibliotecaPilas/Pila.h"
 using namespace std;
 
-void diagonalConNodos(NodoArbolBinarioBusqueda *nodo) {
-    Cola cola;
+void diagonalConNodos(ArbolBinarioBusqueda &arbol) {
+    Cola cola;                                  // guarda nodo
     construirCola(cola);
-    encolar(cola,nodo);
+    encolar(cola,arbol.raiz);
 
     while (!esColaVacia(cola)) {
-        NodoArbolBinarioBusqueda *actual = desencolar(cola);
-        while (actual) {
-            cout<<
+        NodoArbolBinarioBusqueda *actual = desencolar(cola); // el puntero YA es el nodo
+        while (actual) {                                        // cadena derecha = misma diagonal
+            cout<<actual->elemento.flag<<"-"<<actual->elemento.idServidor<<" ";
+            if (!esNodoVacio(actual->izq)) encolar(cola,actual->izq);
+            actual = actual->der;                               // sigo en la diagonal
         }
     }
 }
@@ -24,7 +26,17 @@ void diagonalConNodos(NodoArbolBinarioBusqueda *nodo) {
 int main() {
     ArbolBinarioBusqueda arbol;
     construir(arbol);
+    insertar(arbol,{100,0});
+    insertar(arbol,{50,0});
+    insertar(arbol,{25,0});
+    insertar(arbol,{75,0});
+    insertar(arbol,{40,0});
+    insertar(arbol,{150,0});
+    insertar(arbol,{125,1});
+    insertar(arbol,{175,0});
+    insertar(arbol,{200,0});
 
+    diagonalConNodos(arbol);
 
     return 0;
 }

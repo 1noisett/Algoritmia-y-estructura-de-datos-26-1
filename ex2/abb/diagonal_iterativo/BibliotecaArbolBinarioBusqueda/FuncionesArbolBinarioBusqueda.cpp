@@ -14,14 +14,14 @@ void insertarRecursivo(NodoArbolBinarioBusqueda *&raiz,const ElementoArbolBinari
     if (esNodoVacio(raiz)) {
         plantarNodoArbolBinario(raiz,nullptr,elemento,nullptr);
     } else {
-        int cmp = comparaElementos(raiz->elemento.numero,elemento.numero);
+        int cmp = comparaElementos(raiz->elemento.idServidor,elemento.idServidor);
         if (cmp==1) {            // raiz mayor: insertar a la izquierda
             insertarRecursivo(raiz->izq,elemento);
         } else if (cmp==-1) {    // raiz menor: insertar a la derecha
             insertarRecursivo(raiz->der,elemento);
         } else {
             // valores iguales: ya existe, no se inserta
-            cout<<"El elemento: "<<elemento.numero<<" ya se encuentra en el arbol"<<endl;
+            cout<<"El elemento: "<<elemento.idServidor<<" ya se encuentra en el arbol"<<endl;
         }
     }
 }
@@ -44,7 +44,7 @@ bool buscarRecursivo(NodoArbolBinarioBusqueda *nodo,const ElementoArbolBinarioBu
     if (esNodoVacio(nodo)) {
         return false;
     } else {
-        int cmp = comparaElementos(nodo->elemento.numero,elemento.numero);
+        int cmp = comparaElementos(nodo->elemento.idServidor,elemento.idServidor);
         if (cmp==0) {
             return true;
         } else if (cmp==1) {
@@ -63,7 +63,7 @@ NodoArbolBinarioBusqueda *eliminarRecursivo(NodoArbolBinarioBusqueda *nodo,const
     if (esNodoVacio(nodo)) {
         return nodo;
     }
-    int cmp = comparaElementos(nodo->elemento.numero,elemento.numero);
+    int cmp = comparaElementos(nodo->elemento.idServidor,elemento.idServidor);
     if (cmp==1) {            // nodo mayor: el elemento esta a la izquierda
         nodo->izq = eliminarRecursivo(nodo->izq,elemento);
     }else if (cmp==-1) {     // nodo menor: el elemento esta a la derecha
@@ -122,7 +122,7 @@ void plantarNodoArbolBinario(NodoArbolBinarioBusqueda *&nodo,NodoArbolBinarioBus
 }
 
 void imprimirNodo(NodoArbolBinarioBusqueda *nodo) {
-    cout<<nodo->elemento.numero<<"  ";
+    cout<<nodo->elemento.idServidor<<"  ";
 }
 
 void recorrerPreOrder(const ArbolBinarioBusqueda &arbol) {
