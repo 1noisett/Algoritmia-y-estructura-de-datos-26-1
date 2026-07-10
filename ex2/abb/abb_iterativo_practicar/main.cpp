@@ -110,18 +110,6 @@ void recorrerZigZag(ArbolBinarioBusqueda &arbol) {
 }
 
 // RECORRER DIAGONAL
-void diagonalConNodos(NodoArbolBinarioBusqueda *nodo) {
-    Cola cola;
-    construirCola(cola);
-    encolar(cola,nodo);
-
-    while (!esColaVacia(cola)) {
-        NodoArbolBinarioBusqueda *actual = desencolar(cola);
-        while (actual) {
-            
-        }
-    }
-}
 
 
 int main() {
