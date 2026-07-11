@@ -148,5 +148,5 @@ void destruirRecursivo(NodoArbolBinario *nodo) {
 }
 
 void imprimirNodo(NodoArbolBinario *raiz) {
-    cout<<setw(5)<<raiz->elemento.bit;
+    cout<<raiz->elemento.bit<<"-"<<raiz->elemento.valor<<"  ";
 }
