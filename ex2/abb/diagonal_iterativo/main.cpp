@@ -66,7 +66,7 @@ int main() {
     recorrerDiagonalInversa(arbol);
     cout<<endl;
 
-    // hagamos el recorrido vertical por columnas y el zigzag inverso
+    
 
     return 0;
 }
